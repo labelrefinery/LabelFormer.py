@@ -80,3 +80,5 @@ uv run pytest -q
 ```sh
 uv run python scripts/export_mojo.py --checkpoint runs/smoke/best.pt --out export
 ```
+
+A trained smoke checkpoint (plus Mojo-exported weights) is published at [mseritan/LabelFormer-AV2-smoke](https://huggingface.co/mseritan/LabelFormer-AV2-smoke) on HuggingFace (CC BY-NC-SA, research use).
