@@ -1,0 +1,35 @@
+# Paper-scale configuration (LabelFormer on ArgoVerse 2). Intended for a CUDA GPU.
+run_name: labelformer_av2
+
+data:
+  root: data/processed
+  max_frames: 128
+  max_points_per_frame: 1024
+  num_workers: 8
+
+model:
+  d_model: 256
+  nhead: 4
+  num_layers: 6
+  dim_feedforward: 512
+  dropout: 0.1
+  pillar:
+    x_range: [-12.0, 12.0]
+    y_range: [-4.0, 4.0]
+    pillar_size: 0.1
+    point_feat_dim: 64
+    out_dim: 256
+
+train:
+  epochs: 40
+  batch_size: 4
+  lr: 5.0e-5
+  weight_decay: 1.0e-5
+  warmup_epochs: 2
+  final_lr_ratio: 0.1
+  grad_clip: 5.0
+  heading_weight: 0.1
+  device: auto        # cuda > mps > cpu
+  amp: true           # used on cuda only
+  seed: 0
+  log_every: 50

@@ -1,0 +1,35 @@
+# Small configuration for a local smoke run (Apple Silicon / CPU) on a few AV2 logs.
+run_name: smoke
+
+data:
+  root: data/processed
+  max_frames: 48
+  max_points_per_frame: 384
+  num_workers: 2
+
+model:
+  d_model: 128
+  nhead: 4
+  num_layers: 3
+  dim_feedforward: 256
+  dropout: 0.1
+  pillar:
+    x_range: [-9.6, 9.6]
+    y_range: [-3.2, 3.2]
+    pillar_size: 0.2
+    point_feat_dim: 32
+    out_dim: 128
+
+train:
+  epochs: 6
+  batch_size: 4
+  lr: 1.0e-4
+  weight_decay: 1.0e-5
+  warmup_epochs: 1
+  final_lr_ratio: 0.1
+  grad_clip: 5.0
+  heading_weight: 0.1
+  device: auto
+  amp: false
+  seed: 0
+  log_every: 20
