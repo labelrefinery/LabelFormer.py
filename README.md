@@ -72,3 +72,11 @@ uv run pytest -q
 - Decoders: per-frame pose residuals + one mean-pooled size residual per trajectory.
 - Loss: Smooth-L1 on position/size and sin/cos of doubled heading (λ=0.1) + axis-aligned IoU loss.
 - AV2 feather files are read directly with pyarrow (no `av2` devkit dependency).
+
+## Mojo export
+
+`scripts/export_mojo.py` exports checkpoint weights (BatchNorms folded into convs) and val-track test samples in the LFT1 container consumed by [LabelFormer.mojo](https://github.com/labelrefinery/LabelFormer.mojo):
+
+```sh
+uv run python scripts/export_mojo.py --checkpoint runs/smoke/best.pt --out export
+```
